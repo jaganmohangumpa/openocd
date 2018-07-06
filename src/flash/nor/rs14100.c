@@ -167,7 +167,7 @@ static int rs14100_init(struct flash_bank *bank)
 	LOG_DEBUG("Running flash init algorithm");
 	retval = target_run_algorithm(target, 0 , NULL, 0 , NULL,
 		init_algorithm->address,
-		0,
+		init_algorithm->address + sizeof(rs14100_flash_init_code) - 2,
 		1000, &armv7m_info);
 
 	if (retval != ERROR_OK)
